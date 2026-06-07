@@ -290,7 +290,7 @@
             font-family: 'Playfair Display', serif;
             font-size: 1.4em;
             color: #2c1810;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .donation-subtitle {
@@ -300,91 +300,95 @@
             font-style: italic;
         }
 
-        .donation-buttons {
+        .donation-content {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
-
-        .donate-btn {
-            display: inline-flex;
             align-items: center;
-            gap: 8px;
-            background: #0070BA;
-            color: #fff;
-            text-decoration: none;
-            padding: 12px 28px;
-            border-radius: 25px;
-            font-family: 'Playfair Display', serif;
-            font-size: 1.1em;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 3px 10px rgba(0, 112, 186, 0.3);
-            border: none;
-            cursor: pointer;
+            gap: 30px;
+            flex-wrap: wrap;
         }
 
-        .donate-btn:hover {
-            background: #005ea6;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 112, 186, 0.4);
+        .qr-wrapper {
+            display: inline-block;
+            background: #fff;
+            padding: 16px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 1px solid #e0d5cc;
         }
 
-        .donate-btn svg {
-            width: 20px;
-            height: 20px;
-            fill: currentColor;
+        .qr-wrapper img {
+            width: 200px;
+            height: auto;
+            border-radius: 12px;
+            display: block;
         }
 
-        .donate-custom {
-            margin-top: 15px;
+        .qr-caption {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #6d4c41;
         }
 
-        .donate-custom-input {
+        .qr-caption strong {
+            color: #2c1810;
+        }
+
+        .paypal-link-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .paypal-btn {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-        }
-
-        .donate-custom-input input {
-            width: 100px;
-            padding: 10px 15px;
-            border: 2px solid #0070BA;
-            border-radius: 20px;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.1em;
-            text-align: center;
-            outline: none;
-            color: #3e2723;
-        }
-
-        .donate-custom-input input:focus {
-            border-color: #005ea6;
-            box-shadow: 0 0 0 3px rgba(0, 112, 186, 0.2);
-        }
-
-        .donate-custom-btn {
             background: #0070BA;
             color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
+            text-decoration: none;
+            padding: 14px 32px;
+            border-radius: 30px;
             font-family: 'Playfair Display', serif;
-            font-size: 1em;
-            cursor: pointer;
+            font-size: 1.15em;
+            font-weight: 600;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 112, 186, 0.3);
         }
 
-        .donate-custom-btn:hover {
+        .paypal-btn:hover {
             background: #005ea6;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 112, 186, 0.4);
         }
 
-        .paypal-badge {
-            margin-top: 15px;
-            font-size: 0.85em;
+        .paypal-btn svg {
+            width: 22px;
+            height: 22px;
+            fill: currentColor;
+        }
+
+        .paypal-url {
+            font-size: 0.9em;
             color: #6d4c41;
+            word-break: break-all;
+        }
+
+        .paypal-url a {
+            color: #0070BA;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .paypal-url a:hover {
+            text-decoration: underline;
+        }
+
+        .or-divider {
+            font-size: 0.9em;
+            color: #a1887f;
+            font-style: italic;
         }
 
         @media print {
@@ -428,13 +432,12 @@
                 flex-direction: column;
                 gap: 20px;
             }
-            .donation-buttons {
+            .donation-content {
                 flex-direction: column;
-                align-items: center;
+                gap: 20px;
             }
-            .donate-btn {
-                width: 200px;
-                justify-content: center;
+            .qr-wrapper img {
+                width: 180px;
             }
         }
     </style>
@@ -504,62 +507,34 @@
 
         <!-- Donation Section -->
         <div class="donation-section">
-            <div class="donation-title">💝 Apoya este proyecto</div>
-            <div class="donation-subtitle">Si te gustó esta acta de matrimonio, considera hacer una donación</div>
+            <div class="donation-title">💝 ¿Te gustó esta acta? Apóyame</div>
+            <div class="donation-subtitle">Escanea el QR o haz clic en el botón para donar vía PayPal</div>
 
-            <div class="donation-buttons">
-                <a href="https://www.paypal.com/paypalme/chizugz55/1" target="_blank" class="donate-btn">
-                    <svg viewBox="0 0 24 24"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c1.653.624 2.721 1.818 2.721 4.062 0 2.727-1.903 4.722-5.299 5.253l-.014.01-.01.01-1.15 7.29h-4.28l1.58-10.02c.03-.19.19-.34.39-.34h2.19c3.56 0 6.36-1.44 7.48-5.724z"/></svg>
-                    $1 USD
-                </a>
-                <a href="https://www.paypal.com/paypalme/chizugz55/5" target="_blank" class="donate-btn">
-                    <svg viewBox="0 0 24 24"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c1.653.624 2.721 1.818 2.721 4.062 0 2.727-1.903 4.722-5.299 5.253l-.014.01-.01.01-1.15 7.29h-4.28l1.58-10.02c.03-.19.19-.34.39-.34h2.19c3.56 0 6.36-1.44 7.48-5.724z"/></svg>
-                    $5 USD
-                </a>
-                <a href="https://www.paypal.com/paypalme/chizugz55/10" target="_blank" class="donate-btn">
-                    <svg viewBox="0 0 24 24"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c1.653.624 2.721 1.818 2.721 4.062 0 2.727-1.903 4.722-5.299 5.253l-.014.01-.01.01-1.15 7.29h-4.28l1.58-10.02c.03-.19.19-.34.39-.34h2.19c3.56 0 6.36-1.44 7.48-5.724z"/></svg>
-                    $10 USD
-                </a>
-                <a href="https://www.paypal.com/paypalme/chizugz55/25" target="_blank" class="donate-btn">
-                    <svg viewBox="0 0 24 24"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c1.653.624 2.721 1.818 2.721 4.062 0 2.727-1.903 4.722-5.299 5.253l-.014.01-.01.01-1.15 7.29h-4.28l1.58-10.02c.03-.19.19-.34.39-.34h2.19c3.56 0 6.36-1.44 7.48-5.724z"/></svg>
-                    $25 USD
-                </a>
-            </div>
-
-            <div class="donate-custom">
-                <div class="donate-custom-input">
-                    <span style="font-size:1.2em; color:#3e2723;">$</span>
-                    <input type="number" id="customAmount" placeholder="Otra cantidad" min="1" step="1">
-                    <button class="donate-custom-btn" onclick="donateCustom()">
-                        <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:currentColor;vertical-align:middle;margin-right:5px;"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c1.653.624 2.721 1.818 2.721 4.062 0 2.727-1.903 4.722-5.299 5.253l-.014.01-.01.01-1.15 7.29h-4.28l1.58-10.02c.03-.19.19-.34.39-.34h2.19c3.56 0 6.36-1.44 7.48-5.724z"/></svg>
-                        Donar
-                    </button>
+            <div class="donation-content">
+                <!-- QR Code -->
+                <div class="qr-wrapper">
+                    <img src="https://i.ibb.co/xKMR83zd/pp-my-qrcode-1780853784806.jpg" alt="Código QR PayPal - Chizu Gz">
+                    <div class="qr-caption">
+                        <strong>Chizu Gz</strong> · Escanea para pagar
+                    </div>
                 </div>
-            </div>
 
-            <div class="paypal-badge">
-                Pagos seguros procesados por PayPal · chizugz55@gmail.com
+                <div class="or-divider">— o —</div>
+
+                <!-- PayPal Link Button -->
+                <div class="paypal-link-box">
+                    <a href="https://paypal.me/ChizuGz" target="_blank" class="paypal-btn">
+                        <svg viewBox="0 0 24 24"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c1.653.624 2.721 1.818 2.721 4.062 0 2.727-1.903 4.722-5.299 5.253l-.014.01-.01.01-1.15 7.29h-4.28l1.58-10.02c.03-.19.19-.34.39-.34h2.19c3.56 0 6.36-1.44 7.48-5.724z"/></svg>
+                        Donar con PayPal
+                    </a>
+                    <div class="paypal-url">
+                        <a href="https://paypal.me/ChizuGz" target="_blank">paypal.me/ChizuGz</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <button class="print-btn" onclick="window.print()">🖨️ Imprimir / Guardar PDF</button>
-
-    <script>
-        function donateCustom() {
-            const amount = document.getElementById('customAmount').value;
-            if (amount && amount > 0) {
-                window.open('https://www.paypal.com/paypalme/chizugz55/' + amount, '_blank');
-            } else {
-                alert('Por favor ingresa una cantidad válida');
-            }
-        }
-
-        document.getElementById('customAmount').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                donateCustom();
-            }
-        });
-    </script>
 </body>
 </html>
